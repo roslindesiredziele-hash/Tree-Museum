@@ -20,6 +20,10 @@ class BST
     int height(Node*) const;
 
     void destroy(Node*);
+
+    public:
+
+    BST();
     
 };
 #endif
