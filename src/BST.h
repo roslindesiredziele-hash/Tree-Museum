@@ -27,6 +27,8 @@ class BST
 
     ~BST();
 
+    void insert(int);
+
     
     
 };
