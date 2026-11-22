@@ -58,3 +58,22 @@ int BST::height() const
 {
     return height(root);
 }
+
+int BST::height(Node* node) const
+{
+    if (node == nullptr)
+    {
+        return 0;
+    }
+
+    int leftHeight = height(node->left);
+
+    int rightHeight = height(node->right);
+
+    if (leftHeight > rightHeight)
+    {
+        return leftHeight + 1;
+    }
+
+    return rightHeight + 1;
+}
