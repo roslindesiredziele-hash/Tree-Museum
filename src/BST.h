@@ -3,7 +3,17 @@
 
 class BST
 {
-    
-}
+    private:
 
+    struct Node
+    {
+        int key;
+
+        Node* left;
+        Node* right;
+    };
+
+    
+    
+};
 #endif
