@@ -98,7 +98,7 @@ void BuildBalancedOrder(const std::vector<int>& sorted, int left, int right, std
 
     BuildBalancedOrder(sorted, left, middle - 1, order);
 
-   BuildBalancedOrder(sorted, left, middle + 1, order);
+   BuildBalancedOrder(sorted, middle + 1, right, order);
 }
 
 std::vector<int> GenerateBalancedOrder(const std::vector<int>& sorted)
