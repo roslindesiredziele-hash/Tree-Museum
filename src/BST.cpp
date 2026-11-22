@@ -107,7 +107,7 @@ void BuildBalancedOrder(const std::vector<int>& sorted, int left, int right, std
         return;
     }
 
-    int middle = (left + right) / 2;
+    int middle = left + (right - left) / 2;
 
     order.push_back(sorted[middle]);
 
