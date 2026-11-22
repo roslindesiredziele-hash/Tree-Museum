@@ -77,3 +77,8 @@ int BST::height(Node* node) const
 
     return rightHeight + 1;
 }
+
+bool BST::empty() const
+{
+    return root == nullptr;
+}
