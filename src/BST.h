@@ -36,4 +36,6 @@ class BST
     bool empty() const;
 };
 
+void BuildBalancedOrder(const std::vector<int>&, int, int, std::vector<int>&);
+
 #endif
