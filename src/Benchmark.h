@@ -5,6 +5,6 @@ double AverageRandomBST(int,int,int&);
 
 double AverageBalancedBST(int,int,int&);
 
-
+double AverageStdSet(int, int);
 
 #endif
