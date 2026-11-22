@@ -30,6 +30,6 @@ class BST
     void insert(int);
 
     int height() const;
-    
 };
+
 #endif
