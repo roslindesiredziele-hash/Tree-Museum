@@ -31,6 +31,8 @@ class BST
 
     int height() const;
 
+    int size() const;
+
     bool empty() const;
 };
 
