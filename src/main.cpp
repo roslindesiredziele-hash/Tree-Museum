@@ -4,8 +4,6 @@
 
 double BenchmarkRandomBST(int n);
 
-
-
 int main()
 {
     BST tree;
@@ -25,6 +23,17 @@ for(int x : order)
 }
 
 std::cout << std::endl;
+
+std::cout << tree.height() <<"\n"<< tree.size() <<"\n"<< tree.empty() <<  std::endl;
+
+auto key = GenerateKeys(15);
+
+auto balanced = GenerateBalancedOrder(key);
+
+for(int x : balanced)
+{
+    std::cout << x << ' ';
+}
 
 std::cout << tree.height() <<"\n"<< tree.size() <<"\n"<< tree.empty() <<  std::endl;
 
