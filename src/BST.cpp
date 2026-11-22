@@ -35,21 +35,21 @@ void BST::insert(Node*& node, int key)
     {
         node = new Node;
 
-        node->key = key;
+        node -> key = key;
 
-        node->left = nullptr;
-        node->right = nullptr;
+        node -> left = nullptr;
+        node -> right = nullptr;
 
         return;
     }
 
-    if (key < node->key)
+    if (key < node -> key)
     {
-        insert(node->left, key);
+        insert(node -> left, key);
     }
-    else if (key > node->key)
+    else if (key > node -> key)
     {
-        insert(node->right, key);
+        insert(node -> right, key);
     }
 }
 
