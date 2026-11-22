@@ -19,6 +19,7 @@ class BST
 
     int height(Node*) const;
 
+    void destroy(Node*);
     
 };
 #endif
