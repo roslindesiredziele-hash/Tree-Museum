@@ -4,7 +4,7 @@
 
 double BenchmarkRandomBST(int);
 
-
+double BenchmarkStdSet(int);
 
 int main()
 {
