@@ -1,5 +1,7 @@
 #include "BST.h"
 
+#include <vector>
+
 BST::BST():
      root(nullptr)
 {
@@ -81,4 +83,20 @@ int BST::height(Node* node) const
 bool BST::empty() const
 {
     return root == nullptr;
+}
+
+void BuildBalancedOrder(const std::vector<int>& sorted, int left, int right, std::vector<int>& order)
+{
+    if(left > right)
+    {
+        return;
+    }
+
+    int middle = (left + right) / 2;
+
+    order.push_back(sorted[middle]);
+
+    BuildBalancedOrder(sorted, left, middle - 1, order);
+
+   BuildBalancedOrder(sorted, left, middle + 1, order);
 }
