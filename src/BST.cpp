@@ -24,3 +24,8 @@ void BST::destroy(Node* node)
     delete node;
 }
 
+void BST::insert(Node*& node, int key)
+{
+    insert(root, key);
+}
+
