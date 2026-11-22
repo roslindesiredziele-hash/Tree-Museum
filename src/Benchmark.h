@@ -3,6 +3,8 @@
 
 double AverageRandomBST(int,int,int&);
 
+double AverageBalancedBST(int,int,int&);
+
 
 
 #endif
