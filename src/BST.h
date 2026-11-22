@@ -13,6 +13,8 @@ class BST
         Node* right;
     };
 
+    Node* root;
+
     
     
 };
