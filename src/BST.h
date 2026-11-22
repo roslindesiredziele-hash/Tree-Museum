@@ -44,6 +44,6 @@ void BuildBalancedOrder(const std::vector<int>&, int, int, std::vector<int>&);
 
 std::vector<int> GenerateBalancedOrder(const std::vector<int>&);
 
-
+std::vector<int> GenerateKeys(int);
 
 #endif
