@@ -100,3 +100,12 @@ void BuildBalancedOrder(const std::vector<int>& sorted, int left, int right, std
 
    BuildBalancedOrder(sorted, left, middle + 1, order);
 }
+
+std::vector<int> GenerateBalancedOrder(const std::vector<int>& sorted)
+{
+    std::vector<int> order;
+
+    BuildBalancedOrder(sorted, 0, static_cast<int> (sorted.size()) - 1, order);
+
+    return order;
+}
