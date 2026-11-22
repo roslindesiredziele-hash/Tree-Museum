@@ -1,40 +1,118 @@
-#include "BST.h"
-
+#include <fstream>
 #include <iostream>
+#include <vector>
 
-double BenchmarkRandomBST(int n);
+// Benchmark.cpp functions
+
+double AverageRandomBST(
+    int size,
+    int runs,
+    int& averageHeight
+);
+
+double AverageBalancedBST(
+    int size,
+    int runs,
+    int& averageHeight
+);
+
+double AverageStdSet(
+    int size,
+    int runs
+);
 
 int main()
 {
-    BST tree;
+    std::vector<int> sizes =
+    {
+        127,
+        255,
+        511,
+        1023,
+        2047,
+        4095,
+        8191,
+        16383
+    };
 
-auto keys =
-{
-    1,2,3,4,5,6,7,9,8
-};
+    constexpr int runs = 20;
 
-auto order = GenerateBalancedOrder(keys);
+    std::ofstream file(
+        "data/benchmark.csv"
+    );
 
-for(int x : order)
-{
-    std::cout << x << ' ';
+    if(!file)
+    {
+        std::cerr
+            << "Failed to open benchmark.csv\n";
 
-    tree.insert(x);
-}
+        return 1;
+    }
 
-std::cout << std::endl;
+    file
+        << "Size,"
+        << "BSTRandomMs,"
+        << "BSTBalancedMs,"
+        << "StdSetMs,"
+        << "BSTRandomHeight,"
+        << "BSTBalancedHeight\n";
 
-std::cout << tree.height() <<"\n"<< tree.size() <<"\n"<< tree.empty() <<  std::endl;
+    for(int size : sizes)
+    {
+        int randomHeight = 0;
+        int balancedHeight = 0;
 
-auto key = GenerateKeys(15);
+        double randomTime =
+            AverageRandomBST(
+                size,
+                runs,
+                randomHeight
+            );
 
-auto balanced = GenerateBalancedOrder(key);
+        double balancedTime =
+            AverageBalancedBST(
+                size,
+                runs,
+                balancedHeight
+            );
 
-for(int x : balanced)
-{
-    std::cout << x << ' ';
-}
+        double setTime =
+            AverageStdSet(
+                size,
+                runs
+            );
 
-std::cout << tree.height() <<"\n"<< tree.size() <<"\n"<< tree.empty() <<  std::endl;
+        file
+            << size << ","
+            << randomTime << ","
+            << balancedTime << ","
+            << setTime << ","
+            << randomHeight << ","
+            << balancedHeight
+            << '\n';
 
+        std::cout
+            << "Size: " << size
+            << " | BST Random: "
+            << randomTime
+            << " ms"
+            << " | BST Balanced: "
+            << balancedTime
+            << " ms"
+            << " | std::set: "
+            << setTime
+            << " ms"
+            << " | Random Height: "
+            << randomHeight
+            << " | Balanced Height: "
+            << balancedHeight
+            << '\n';
+    }
+
+    file.close();
+
+    std::cout
+        << "\nBenchmark complete.\n";
+
+    return 0;
 }
