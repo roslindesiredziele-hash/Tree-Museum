@@ -46,4 +46,8 @@ std::vector<int> GenerateBalancedOrder(const std::vector<int>&);
 
 std::vector<int> GenerateKeys(int);
 
+double BenchmarkRandomBST(int n);
+
+
+
 #endif
