@@ -61,7 +61,7 @@ int BST::height() const
     return height(root);
 }
 
-int BST::height(Node* node) const
+int BST::height(const Node* node) const
 {
     if (node == nullptr)
     {
@@ -85,7 +85,7 @@ int BST::size() const
     return size(root);
 }
 
-int BST::size(Node* node) const
+int BST::size(const Node* node) const
 {
     if(node == nullptr)
     {
