@@ -1,6 +1,8 @@
 #ifndef BST_H
 #define BST_H
 
+#include <vector>
+
 class BST
 {
     private:
@@ -18,6 +20,8 @@ class BST
     void insert(Node*&, int);
 
     int height(Node*) const;
+
+    int size(Node*) const;
 
     void destroy(Node*);
 
