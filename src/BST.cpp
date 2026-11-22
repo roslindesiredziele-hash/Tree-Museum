@@ -85,7 +85,15 @@ int BST::size() const
     return size(root);
 }
 
+int BST::size(Node* node) const
+{
+    if(node == nullptr)
+    {
+        return 0;
+    }
 
+    return 1 + size(node -> left) + size(node -> right);
+}
 
 bool BST::empty() const
 {
