@@ -17,7 +17,8 @@ class BST
 
     void insert(Node*&, int);
 
-    
+    int height(Node*) const;
+
     
 };
 #endif
