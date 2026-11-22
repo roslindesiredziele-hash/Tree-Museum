@@ -15,6 +15,8 @@ class BST
 
     Node* root;
 
+    void insert(Node*&, int);
+
     
     
 };
