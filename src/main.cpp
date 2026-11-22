@@ -2,6 +2,10 @@
 
 #include <iostream>
 
+double BenchmarkRandomBST(int n);
+
+
+
 int main()
 {
     BST tree;
