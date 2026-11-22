@@ -22,6 +22,6 @@ for(int x : order)
 
 std::cout << std::endl;
 
-std::cout << tree.height() << std::endl;
+std::cout << tree.height() <<"\n"<< tree.size() <<"\n"<< tree.height() <<  std::endl;
 
 }
