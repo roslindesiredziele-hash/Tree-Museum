@@ -53,3 +53,8 @@ void BST::insert(Node*& node, int key)
     }
 }
 
+
+int BST::height() const
+{
+    return height(root);
+}
