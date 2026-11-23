@@ -34,19 +34,10 @@ int main()
         << "BSTRandomMs,"
         << "BSTBalancedMs,"
         << "StdSetMs,"
+        << "BSTDeleteMs,"
+        <<"StdSetDeleteMs,"
         << "BSTRandomHeight,"
         << "BSTBalancedHeight";
-
-    std::ofstream rmfile("data/data.csv");
-
-    if(!rmfile)
-    {
-        std::cerr << "Failed to open benchmark.csv\n";
-
-        return 1;
-    }
-
-    rmfile << "Size," << "BSTRemove," <<"SETRemove\n";
 
     for(int size : sizes)
     {
@@ -68,14 +59,10 @@ int main()
             << randomTime << ","
             << balancedTime << ","
             << setTime << ","
+            << deleteBST << ","
+            << deleteSet << ","
             << randomHeight << ","
             << balancedHeight << ","
-            << '\n';
-
-        rmfile 
-            << size << ","
-            << deleteBST << ","
-            << deleteSet
             << '\n';
 
         std::cout
@@ -94,10 +81,10 @@ int main()
             << " | Balanced Height: "
             << balancedHeight
             <<"\n\n"
-            << " | delete BST: "
+            << " | BST Delete: "
             << deleteBST
             << " ms"
-            << " | delete Set: "
+            << " | Set Delete: "
             << deleteSet
             << " ms"
             << "\n\n";
