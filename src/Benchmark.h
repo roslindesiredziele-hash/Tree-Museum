@@ -26,9 +26,14 @@ double AverageBalancedBST(int size, int runs, int& averageHeight);
 double AverageStdSet(int size, int runs);
 
 void ShuffleKeys(std::vector<int>& keys);
+//-------------------------------------------------------------------------------------------------------
 
 double AverageDeleteBST(int, int);
 
 double AverageDeleteStdSet(int, int);
+
+double BenchmarkDeleteBST(int size);
+
+
 
 #endif
