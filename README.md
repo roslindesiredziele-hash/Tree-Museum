@@ -2,19 +2,19 @@
 
 A C++ implementation and empirical analysis of Binary Search Trees (BSTs) developed for **Assignment III – Task 1: An Introduction to Applied Dendrology** from the *Tree Museum* coursework.
 
-This project investigates how insertion order affects the shape and performance of binary search trees.
+This project investigates how insertion order affects the structure and performance of Binary Search Trees.
 
 ---
 
 ## Problem Description
 
-The assignment requires implementing a binary tree container and comparing the cumulative running times of inserting a large set of keys into:
+The assignment requires implementing a binary tree container and empirically comparing the cumulative running times of inserting large sets of keys into:
 
 1. A Binary Search Tree using a random insertion order.
 2. A Binary Search Tree using a best-case insertion order that produces a perfectly balanced tree.
 3. A library implementation using `std::set`.
 
-The assignment also requires reporting the actual height of the generated trees and comparing the empirical results with theoretical expectations.
+The actual heights of the generated trees must also be measured and compared with the theoretical expectations.
 
 ---
 
@@ -36,10 +36,6 @@ Assignment-III_Tree_museum/
 │   ├── BST.cpp
 │   ├── Benchmark.h
 │   ├── Benchmark.cpp
-│   ├── AVL.h
-│   ├── AVL.cpp
-│   ├── TernaryTree.h
-│   ├── TernaryTree.cpp
 │   └── main.cpp
 │
 ├── Utils/
@@ -78,17 +74,13 @@ On Windows:
 
 The program:
 
-1. Generates test datasets.
+1. Generates benchmark datasets.
 2. Builds BSTs using random insertion order.
 3. Builds BSTs using balanced insertion order.
 4. Builds a `std::set`.
 5. Measures insertion times.
 6. Measures resulting tree heights.
-7. Saves benchmark results to:
-
-```text
-data/benchmark.csv
-```
+7. Saves benchmark results to `data/benchmark.csv`.
 
 Generate graphs with:
 
@@ -100,7 +92,7 @@ py -3.13 report/graph.py
 
 ## Dataset
 
-The benchmark dataset is stored in:
+The benchmark dataset is provided in:
 
 ```text
 data/benchmark.csv
@@ -114,6 +106,8 @@ Each record contains:
 - `std::set` insertion time
 - BST height (random order)
 - BST height (balanced order)
+
+The dataset is used to generate all graphs included in the report.
 
 ---
 
@@ -138,13 +132,13 @@ struct Node
 Insertion follows standard BST rules:
 
 ```text
-key < node->key   → left subtree
-key > node->key   → right subtree
+key < node->key  → left subtree
+key > node->key  → right subtree
 ```
 
-Duplicate values are ignored.
+Duplicate keys are ignored.
 
-### Height
+### Height Calculation
 
 Tree height is computed recursively:
 
@@ -159,7 +153,7 @@ height(node)
 
 ### Memory Management
 
-All dynamically allocated nodes are released through a recursive postorder traversal:
+All nodes are released using recursive postorder traversal:
 
 ```cpp
 destroy(left);
@@ -167,7 +161,7 @@ destroy(right);
 delete node;
 ```
 
-This ensures that no memory leaks occur.
+ensuring correct memory cleanup and no leaks.
 
 ---
 
@@ -175,7 +169,7 @@ This ensures that no memory leaks occur.
 
 A perfectly balanced BST cannot be obtained by inserting keys in sorted order.
 
-Instead, the insertion order is generated recursively:
+Instead, the insertion sequence is generated recursively:
 
 1. Insert the middle element.
 2. Insert the middle of the left half.
@@ -232,13 +226,13 @@ O(n)
 
 ### Balanced BST
 
-Since the generated insertion order produces a balanced tree:
+The generated insertion order produces a balanced tree whose height remains close to:
 
 ```text
-Height ≈ log₂(n)
+O(log n)
 ```
 
-Insertion remains:
+Insertion therefore behaves like:
 
 ```text
 O(log n)
@@ -262,13 +256,15 @@ O(log n)
 
 ## Expected Graph Behavior
 
-Based on the theoretical complexity:
+The theoretical complexity predicts the following:
 
-- Insertion times should increase as the number of keys increases.
-- Balanced BST insertion should outperform random BST insertion.
-- The height of the balanced BST should grow slowly and remain close to `log₂(n)`.
-- The random BST should produce significantly taller trees.
-- `std::set` should maintain logarithmic behavior due to self-balancing.
+- Insertion time should increase as the number of keys increases.
+- Balanced BST insertion should produce shorter search paths than random BST insertion.
+- Balanced BST height should remain close to `log₂(n)`.
+- Random BST height should grow significantly faster.
+- `std::set` should maintain logarithmic behavior due to automatic balancing.
+
+The generated graphs should reflect these expectations.
 
 ---
 
@@ -297,7 +293,7 @@ which allows perfectly balanced binary trees to be constructed.
 
 ### Repetitions
 
-Each benchmark is averaged over:
+Each benchmark configuration is averaged over:
 
 ```text
 20 runs
@@ -305,63 +301,81 @@ Each benchmark is averaged over:
 
 ---
 
-## Results
+## Benchmark Results
 
-### Representative Results
+| Keys | BST Random (ms) | BST Balanced (ms) | std::set (ms) | Random Height | Balanced Height |
+|------:|---------------:|------------------:|--------------:|--------------:|----------------:|
+| 127 | 0.013320 | 0.007175 | 0.033905 | 14 | 7 |
+| 255 | 0.030065 | 0.017875 | 0.071975 | 17 | 8 |
+| 511 | 0.073115 | 0.042950 | 0.172140 | 19 | 9 |
+| 1023 | 0.194540 | 0.111505 | 0.362635 | 22 | 10 |
+| 2047 | 0.335515 | 0.228735 | 0.767980 | 24 | 11 |
+| 4095 | 0.806045 | 0.482740 | 1.573080 | 27 | 12 |
+| 8191 | 1.713650 | 0.951395 | 3.697670 | 30 | 13 |
+| 16383 | 4.058660 | 1.987970 | 7.122570 | 32 | 14 |
 
-| Keys | Random BST Height | Balanced BST Height |
-|------:|------------------:|--------------------:|
-| 127 | 14 | 7 |
-| 255 | 17 | 8 |
-| 511 | 19 | 9 |
-| 1023 | 22 | 10 |
-| 2047 | 24 | 11 |
-| 4095 | 27 | 12 |
-| 8191 | 30 | 13 |
-| 16383 | 32 | 14 |
+Because randomization is used when generating insertion orders, exact runtimes and heights may vary slightly between executions.
 
-### Representative Insertion Times
+---
 
-| Keys | BST Random (ms) | BST Balanced (ms) | std::set (ms) |
-|------:|---------------:|------------------:|--------------:|
-| 127 | 0.013 | 0.007 | 0.034 |
-| 255 | 0.030 | 0.018 | 0.072 |
-| 511 | 0.073 | 0.043 | 0.172 |
-| 1023 | 0.195 | 0.112 | 0.363 |
-| 2047 | 0.336 | 0.229 | 0.768 |
-| 4095 | 0.806 | 0.483 | 1.573 |
-| 8191 | 1.714 | 0.951 | 3.698 |
-| 16383 | 4.059 | 1.988 | 7.123 |
+## Graph Methodology
 
-Because randomization is used during benchmarking, exact values may vary between executions.
+The benchmark graphs visualize both performance characteristics and structural properties.
+
+### Insertion Time Graph
+
+The insertion-time graph compares:
+
+- BST with random insertion order
+- BST with balanced insertion order
+- `std::set`
+
+Expected behavior:
+
+- Runtime increases as the number of keys increases.
+- Balanced BST insertion should require fewer comparisons due to smaller tree height.
+- `std::set` should maintain logarithmic behavior but may incur additional balancing overhead.
+
+### Height Graph
+
+The height graph compares:
+
+- BST random insertion
+- BST balanced insertion
+
+Expected behavior:
+
+- Balanced BST height should closely follow the theoretical minimum.
+- Random BST height should be significantly larger.
+- The difference should become increasingly visible as tree size grows.
 
 ---
 
 ## Generated Graphs
 
-The following graphs are generated from `benchmark.csv`.
+The following graphs were generated directly from `benchmark.csv`.
 
-### Insertion Time vs Number of Keys
+### Figure 1 – Insertion Time vs Number of Keys
 
-report/insertion_time.png
+![Insertion Time](report/insertion_time.png)
 
 **Observation**
 
-- Insertion time increases with tree size.
-- Balanced BST insertion is consistently faster than random BST insertion.
-- `std::set` is slower because it performs balancing operations during insertion.
+- All structures exhibit increasing insertion times as the number of keys grows.
+- Balanced BST insertion consistently outperforms random BST insertion.
+- `std::set` is slower because maintaining balance introduces additional work during insertion.
 
 ---
 
-### Tree Height vs Number of Keys
+### Figure 2 – Tree Height vs Number of Keys
 
-report/tree_height.png
+![Tree Height](report/tree_height.png)
 
 **Observation**
 
 - The balanced BST closely follows the theoretical minimum height.
 - Random insertion produces significantly taller trees.
-- The height difference becomes more pronounced as the number of keys increases.
+- The difference becomes more pronounced as the number of keys increases.
 
 ---
 
@@ -369,7 +383,7 @@ report/tree_height.png
 
 ### Effect of Insertion Order
 
-The insertion order has a significant impact on BST structure.
+Insertion order has a significant impact on tree structure.
 
 Balanced insertion produced trees whose heights closely matched the theoretical minimum.
 
@@ -382,7 +396,7 @@ Balanced Height = 14
 Random Height   = 32
 ```
 
-The random BST required more than twice as many levels as the balanced BST.
+The randomly constructed BST required more than twice as many levels.
 
 ### Effect on Performance
 
@@ -395,27 +409,27 @@ BST Random   ≈ 4.06 ms
 BST Balanced ≈ 1.99 ms
 ```
 
-The shallower structure required fewer comparisons during insertion.
+The shallower structure reduced the average search path during insertion.
 
 ### Comparison with std::set
 
-Although `std::set` maintained logarithmic behavior, it was slower than both BST variants because it performs additional balancing operations internally.
+Although `std::set` maintained logarithmic behavior, it was slower than both BST variants because it performs balancing operations internally.
 
 ---
 
 ## Conclusions
 
-The experimental results confirm that tree structure has a significant impact on performance.
+The experimental results confirm that insertion order has a substantial impact on tree structure and performance.
 
-Balanced insertion produced trees with heights close to the theoretical minimum and consistently lower insertion times than randomly constructed BSTs.
+Balanced insertion produced trees whose heights remained close to the theoretical minimum and consistently achieved lower insertion times than randomly constructed BSTs.
 
-The benchmark results support the theoretical analysis:
+The benchmark graphs clearly support the theoretical analysis:
 
 - Balanced trees maintain logarithmic height.
 - Random BSTs become significantly taller.
-- Shallower trees generally provide better insertion performance.
+- Shallower trees generally lead to faster insertion performance.
 
-Overall, the results demonstrate why balancing strategies are important in search-tree data structures.
+Overall, the results demonstrate why balanced tree structures are important for maintaining efficient search and insertion operations.
 
 ---
 
