@@ -29,6 +29,6 @@ void ShuffleKeys(std::vector<int>& keys);
 
 double AverageDeleteBST(int, int);
 
-
+double AverageDeleteStdSet(int, int);
 
 #endif
