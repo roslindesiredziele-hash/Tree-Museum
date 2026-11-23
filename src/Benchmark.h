@@ -34,6 +34,6 @@ double AverageDeleteStdSet(int, int);
 
 double BenchmarkDeleteBST(int size);
 
-
+double BenchmarkDeleteStdSet(int size);
 
 #endif
