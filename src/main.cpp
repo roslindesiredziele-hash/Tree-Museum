@@ -50,7 +50,7 @@ int main()
 
         double deleteBST = AverageDeleteBST(size, runs);
         
-        
+        double deleteSet = AverageDeleteStdSet(size, runs);
 
         file
             << size << ","
