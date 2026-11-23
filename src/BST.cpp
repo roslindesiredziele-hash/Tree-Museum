@@ -100,15 +100,6 @@ bool BST::empty() const
     return root == nullptr;
 }
 
-std::vector<int> GenerateBalancedOrder(const std::vector<int>& sorted)
-{
-    std::vector<int> order;
-
-    BuildBalancedOrder(sorted, 0, static_cast<int> (sorted.size()) - 1, order);
-
-    return order;
-}
-
 std::vector<int> GenerateKeys(int n)
 {
     std::vector<int> keys;
