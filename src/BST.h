@@ -25,6 +25,8 @@ class BST
 
     void remove(Node*&, int);
 
+    
+
     public:
 
     BST();
@@ -38,6 +40,8 @@ class BST
     int size() const;
 
     bool empty() const;
+
+    void remove(int);
 };
 
 #endif
