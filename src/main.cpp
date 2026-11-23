@@ -35,9 +35,7 @@ int main()
         << "BSTBalancedMs,"
         << "StdSetMs,"
         << "BSTRandomHeight,"
-        << "BSTBalancedHeight"
-        <<"BSTRemove,"
-        <<"SETRemove\n";
+        << "BSTBalancedHeight";
 
     std::ofstream rmfile("data/data.csv");
 
@@ -48,7 +46,7 @@ int main()
         return 1;
     }
 
-    
+    rmfile << "Size," << "BSTRemove," <<"SETRemove\n";
 
     for(int size : sizes)
     {
@@ -72,6 +70,9 @@ int main()
             << setTime << ","
             << randomHeight << ","
             << balancedHeight << ","
+            << '\n';
+
+        rmfile 
             << deleteBST << ","
             << deleteSet
             << '\n';
