@@ -25,7 +25,7 @@ class BST
 
     void remove(Node*&, int);
 
-    Node* findMin(Node*);
+    Node* findMin(Node*) const;
 
     public:
 

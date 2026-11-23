@@ -66,9 +66,9 @@ int BST::height(const Node* node) const
         return 0;
     }
 
-    int leftHeight = height(node->left);
+    int leftHeight = height(node -> left);
 
-    int rightHeight = height(node->right);
+    int rightHeight = height(node -> right);
 
     if (leftHeight > rightHeight)
     {
@@ -103,11 +103,11 @@ void BST::remove(int key)
     remove(root, key);
 }
 
-BST::Node* BST::findMin(Node* node)
+BST::Node* BST::findMin(Node* node) const
 {
-    while(node->left != nullptr)
+    while(node -> left != nullptr)
     {
-        node = node->left;
+        node = node -> left;
     }
 
     return node;
@@ -120,20 +120,19 @@ void BST::remove(Node*& node, int key)
         return;
     }
 
-    if(key < node->key)
+    if(key < node -> key)
     {
-        remove(node->left, key);
+        remove(node -> left, key);
     }
-    else if(key > node->key)
+    else if(key > node -> key)
     {
-        remove(node->right, key);
+        remove(node -> right, key);
     }
     else
     {
         // no children
 
-        if(node->left == nullptr &&
-           node->right == nullptr)
+        if(node -> left == nullptr && node -> right == nullptr)
         {
             delete node;
 
@@ -142,22 +141,22 @@ void BST::remove(Node*& node, int key)
 
         // only right child
 
-        else if(node->left == nullptr)
+        else if(node -> left == nullptr)
         {
             Node* temp = node;
 
-            node = node->right;
+            node = node -> right;
 
             delete temp;
         }
 
         // only left child
 
-        else if(node->right == nullptr)
+        else if(node -> right == nullptr)
         {
             Node* temp = node;
 
-            node = node->left;
+            node = node -> left;
 
             delete temp;
         }
@@ -166,16 +165,11 @@ void BST::remove(Node*& node, int key)
 
         else
         {
-            Node* successor =
-                findMin(node->right);
+            Node* successor = findMin(node -> right);
 
-            node->key =
-                successor->key;
+            node -> key = successor -> key;
 
-            remove(
-                node->right,
-                successor->key
-            );
+            remove(node -> right, successor -> key);
         }
     }
 }
