@@ -99,15 +99,3 @@ bool BST::empty() const
 {
     return root == nullptr;
 }
-
-std::vector<int> GenerateKeys(int n)
-{
-    std::vector<int> keys;
-
-    for(int i = 1; i <= n; i++)
-    {
-        keys.push_back(i);
-    }
-
-    return keys;
-}

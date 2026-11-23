@@ -27,3 +27,14 @@ std::vector<int> GenerateBalancedOrder(const std::vector<int>& sorted)
     return order;
 }
 
+std::vector<int> GenerateKeys(int n)
+{
+    std::vector<int> keys;
+
+    for(int i = 1; i <= n; i++)
+    {
+        keys.push_back(i);
+    }
+
+    return keys;
+}
