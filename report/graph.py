@@ -1,12 +1,18 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# ==================================================
+# Load Data
+# ==================================================
+
 df = pd.read_csv("data/benchmark.csv")
 
-# ==========================================
+plt.style.use("default")
+
+# ==================================================
 # Graph 1
-# Insertion Time vs Tree Size
-# ==========================================
+# Insertion Time vs Number of Keys
+# ==================================================
 
 plt.figure(figsize=(10, 6))
 
@@ -39,7 +45,8 @@ plt.title("Insertion Time vs Number of Keys")
 plt.xlabel("Number of Keys")
 plt.ylabel("Insertion Time (ms)")
 
-plt.grid(True)
+plt.grid(True, alpha=0.3)
+
 plt.legend()
 
 plt.tight_layout()
@@ -49,10 +56,10 @@ plt.savefig(
     dpi=300
 )
 
-# ==========================================
+# ==================================================
 # Graph 2
 # Tree Height vs Number of Keys
-# ==========================================
+# ==================================================
 
 plt.figure(figsize=(10, 6))
 
@@ -75,9 +82,10 @@ plt.plot(
 plt.title("Tree Height vs Number of Keys")
 
 plt.xlabel("Number of Keys")
-plt.ylabel("Tree Height")
+plt.ylabel("Height")
 
-plt.grid(True)
+plt.grid(True, alpha=0.3)
+
 plt.legend()
 
 plt.tight_layout()
@@ -86,5 +94,46 @@ plt.savefig(
     "report/tree_height.png",
     dpi=300
 )
+
+# ==================================================
+# Graph 3
+# Deletion Time vs Number of Keys
+# ==================================================
+
+plt.figure(figsize=(10, 6))
+
+plt.plot(
+    df["Size"],
+    df["BSTDeleteMs"],
+    marker="o",
+    linewidth=2,
+    label="BST Delete"
+)
+
+plt.plot(
+    df["Size"],
+    df["StdSetDeleteMs"],
+    marker="o",
+    linewidth=2,
+    label="std::set Delete"
+)
+
+plt.title("Deletion Time vs Number of Keys")
+
+plt.xlabel("Number of Keys")
+plt.ylabel("Deletion Time (ms)")
+
+plt.grid(True, alpha=0.3)
+
+plt.legend()
+
+plt.tight_layout()
+
+plt.savefig(
+    "report/deletion_time.png",
+    dpi=300
+)
+
+print("Graphs saved to report/")
 
 plt.show()
