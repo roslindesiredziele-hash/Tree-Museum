@@ -20,14 +20,11 @@ int main()
 
     constexpr int runs = 20;
 
-    std::ofstream file(
-        "data/benchmark.csv"
-    );
+    std::ofstream file("data/benchmark.csv");
 
     if(!file)
     {
-        std::cerr
-            << "Failed to open benchmark.csv\n";
+        std::cerr << "Failed to open benchmark.csv\n";
 
         return 1;
     }
@@ -45,25 +42,13 @@ int main()
         int randomHeight = 0;
         int balancedHeight = 0;
 
-        double randomTime =
-            AverageRandomBST(
-                size,
-                runs,
-                randomHeight
-            );
+        double randomTime = AverageRandomBST(size, runs, randomHeight);
 
-        double balancedTime =
-            AverageBalancedBST(
-                size,
-                runs,
-                balancedHeight
-            );
+        double balancedTime = AverageBalancedBST(size, runs, balancedHeight);
 
-        double setTime =
-            AverageStdSet(
-                size,
-                runs
-            );
+        double setTime = AverageStdSet(size, runs);
+
+        
 
         file
             << size << ","
@@ -94,8 +79,8 @@ int main()
 
     file.close();
 
-    std::cout
-        << "\nBenchmark complete.\n";
+    std::cout << "\nBenchmark complete.\n";
+    //--------------------------------------------------------------------
 
     return 0;
 }
