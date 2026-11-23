@@ -1,6 +1,5 @@
 *.exe
 *.o
 *.obj
-*.png
 .vscode/
 .vscode
