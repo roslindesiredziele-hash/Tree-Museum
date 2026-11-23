@@ -222,3 +222,16 @@ double BenchmarkDeleteStdSet(int size)
 
     return MeasureMilliseconds(start, end, freq);
 }
+
+double AverageDeleteBST(int size, int runs)
+{
+    double total = 0;
+
+    for(int i = 0; i < runs; i++)
+    {
+        total += BenchmarkDeleteBST(size);
+    }
+
+    return total / runs;
+}
+
