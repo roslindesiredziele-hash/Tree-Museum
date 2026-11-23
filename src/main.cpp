@@ -4,25 +4,6 @@
 #include <iostream>
 #include <vector>
 
-// Benchmark.cpp functions
-
-double AverageRandomBST(
-    int size,
-    int runs,
-    int& averageHeight
-);
-
-double AverageBalancedBST(
-    int size,
-    int runs,
-    int& averageHeight
-);
-
-double AverageStdSet(
-    int size,
-    int runs
-);
-
 int main()
 {
     std::vector<int> sizes =

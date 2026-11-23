@@ -1,3 +1,4 @@
+#include "Benchmark.h"
 #include "BST.h"
 
 #include <Windows.h>
@@ -9,80 +10,39 @@
 #include <set>
 #include <vector>
 
-double MeasureMilliseconds(
-    LARGE_INTEGER start,
-    LARGE_INTEGER end,
-    LARGE_INTEGER freq
-);
+double MeasureMilliseconds(LARGE_INTEGER start, LARGE_INTEGER end, LARGE_INTEGER freq);
 
-double BenchmarkRandomBST(
-    int size,
-    int& height
-);
+double BenchmarkRandomBST(int size,int& height);
 
-double BenchmarkBalancedBST(
-    int size,
-    int& height
-);
+double BenchmarkBalancedBST(int size, int& height);
 
-double BenchmarkStdSet(
-    int size
-);
+double BenchmarkStdSet(int size);
 
-double AverageRandomBST(
-    int size,
-    int runs,
-    int& averageHeight
-);
+double AverageRandomBST(int size, int runs, int& averageHeight);
 
-double AverageBalancedBST(
-    int size,
-    int runs,
-    int& averageHeight
-);
+double AverageBalancedBST(int size, int runs, int& averageHeight);
 
-double AverageStdSet(
-    int size,
-    int runs
-);
+double AverageStdSet(int size, int runs);
 
-void ShuffleKeys(
-    std::vector<int>& keys
-);
+void ShuffleKeys(std::vector<int>& keys);
 
-double MeasureMilliseconds(
-    LARGE_INTEGER start,
-    LARGE_INTEGER end,
-    LARGE_INTEGER freq
-)
+double MeasureMilliseconds(LARGE_INTEGER start, LARGE_INTEGER end, LARGE_INTEGER freq)
 {
-    return static_cast<double>(
-        end.QuadPart - start.QuadPart
-    ) * 1000.0 / freq.QuadPart;
+    return static_cast<double>(end.QuadPart - start.QuadPart) * 1000.0 / freq.QuadPart;
 }
 
-void ShuffleKeys(
-    std::vector<int>& keys
-)
+void ShuffleKeys(std::vector<int>& keys)
 {
     static std::random_device rd;
 
     static std::mt19937 gen(rd());
 
-    std::shuffle(
-        keys.begin(),
-        keys.end(),
-        gen
-    );
+    std::shuffle(keys.begin(), keys.end(), gen);
 }
 
-double BenchmarkRandomBST(
-    int size,
-    int& height
-)
+double BenchmarkRandomBST(int size,int& height)
 {
-    std::vector<int> keys =
-        GenerateKeys(size);
+    std::vector<int> keys = GenerateKeys(size);
 
     ShuffleKeys(keys);
 
@@ -105,23 +65,14 @@ double BenchmarkRandomBST(
 
     height = tree.height();
 
-    return MeasureMilliseconds(
-        start,
-        end,
-        freq
-    );
+    return MeasureMilliseconds(start, end, freq);
 }
 
-double BenchmarkBalancedBST(
-    int size,
-    int& height
-)
+double BenchmarkBalancedBST(int size, int& height)
 {
-    std::vector<int> keys =
-        GenerateKeys(size);
+    std::vector<int> keys = GenerateKeys(size);
 
-    std::vector<int> balanced =
-        GenerateBalancedOrder(keys);
+    std::vector<int> balanced = GenerateBalancedOrder(keys);
 
     BST tree;
 
@@ -142,19 +93,12 @@ double BenchmarkBalancedBST(
 
     height = tree.height();
 
-    return MeasureMilliseconds(
-        start,
-        end,
-        freq
-    );
+    return MeasureMilliseconds(start, end, freq);
 }
 
-double BenchmarkStdSet(
-    int size
-)
+double BenchmarkStdSet(int size)
 {
-    std::vector<int> keys =
-        GenerateKeys(size);
+    std::vector<int> keys = GenerateKeys(size);
 
     ShuffleKeys(keys);
 
@@ -175,18 +119,10 @@ double BenchmarkStdSet(
 
     QueryPerformanceCounter(&end);
 
-    return MeasureMilliseconds(
-        start,
-        end,
-        freq
-    );
+    return MeasureMilliseconds(start, end, freq);
 }
 
-double AverageRandomBST(
-    int size,
-    int runs,
-    int& averageHeight
-)
+double AverageRandomBST(int size, int runs, int& averageHeight)
 {
     double totalTime = 0;
 
@@ -196,28 +132,17 @@ double AverageRandomBST(
     {
         int height = 0;
 
-        totalTime +=
-            BenchmarkRandomBST(
-                size,
-                height
-            );
+        totalTime += BenchmarkRandomBST(size, height);
 
         totalHeight += height;
     }
 
-    averageHeight =
-        static_cast<int>(
-            totalHeight / runs
-        );
+    averageHeight = static_cast<int>(totalHeight / runs);
 
     return totalTime / runs;
 }
 
-double AverageBalancedBST(
-    int size,
-    int runs,
-    int& averageHeight
-)
+double AverageBalancedBST(int size, int runs, int& averageHeight)
 {
     double totalTime = 0;
 
@@ -227,34 +152,24 @@ double AverageBalancedBST(
     {
         int height = 0;
 
-        totalTime +=
-            BenchmarkBalancedBST(
-                size,
-                height
-            );
+        totalTime += BenchmarkBalancedBST(size, height);
 
         totalHeight += height;
     }
 
-    averageHeight =
-        static_cast<int>(
-            totalHeight / runs
-        );
+    averageHeight = static_cast<int>(totalHeight / runs);
 
     return totalTime / runs;
 }
 
-double AverageStdSet(
-    int size,
-    int runs
+double AverageStdSet(int size, int runs
 )
 {
     double totalTime = 0;
 
     for(int i = 0; i < runs; i++)
     {
-        totalTime +=
-            BenchmarkStdSet(size);
+        totalTime += BenchmarkStdSet(size);
     }
 
     return totalTime / runs;
