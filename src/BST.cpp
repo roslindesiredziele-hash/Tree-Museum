@@ -97,3 +97,9 @@ bool BST::empty() const
 {
     return root == nullptr;
 }
+
+void BST::remove(int key)
+{
+    remove(root, key);
+}
+
