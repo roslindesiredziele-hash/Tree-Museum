@@ -48,6 +48,8 @@ int main()
 
         double setTime = AverageStdSet(size, runs);
 
+        double deleteBST = AverageDeleteBST(size, runs);
+        
         
 
         file
