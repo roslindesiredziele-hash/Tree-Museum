@@ -22,6 +22,8 @@ int main()
 
     std::ofstream file("data/benchmark.csv");
 
+    std::ofstream rmfile("data/data.csv");
+
     if(!file)
     {
         std::cerr << "Failed to open benchmark.csv\n";
