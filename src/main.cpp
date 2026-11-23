@@ -35,7 +35,9 @@ int main()
         << "BSTBalancedMs,"
         << "StdSetMs,"
         << "BSTRandomHeight,"
-        << "BSTBalancedHeight\n";
+        << "BSTBalancedHeight"
+        <<"BSTRemove,"
+        <<"SETRemove\n";
 
     for(int size : sizes)
     {
