@@ -27,4 +27,8 @@ double AverageStdSet(int size, int runs);
 
 void ShuffleKeys(std::vector<int>& keys);
 
+double AverageDeleteBST(int, int);
+
+
+
 #endif
