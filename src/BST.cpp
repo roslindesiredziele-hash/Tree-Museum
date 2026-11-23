@@ -103,7 +103,15 @@ void BST::remove(int key)
     remove(root, key);
 }
 
+BST::Node* BST::findMin(Node* node)
+{
+    while(node->left != nullptr)
+    {
+        node = node->left;
+    }
 
+    return node;
+}
 
 void BST::remove(Node*& node, int key)
 {
