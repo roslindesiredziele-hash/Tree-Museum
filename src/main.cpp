@@ -41,6 +41,13 @@ int main()
 
     std::ofstream rmfile("data/data.csv");
 
+    if(!rmfile)
+    {
+        std::cerr << "Failed to open benchmark.csv\n";
+
+        return 1;
+    }
+
     
 
     for(int size : sizes)
