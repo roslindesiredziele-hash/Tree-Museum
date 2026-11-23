@@ -2,3 +2,5 @@
 *.o
 *.obj
 *.png
+.vscode/
+.vscode
