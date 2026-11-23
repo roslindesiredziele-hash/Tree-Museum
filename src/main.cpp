@@ -37,7 +37,7 @@ int main()
         << "BSTDeleteMs,"
         <<"StdSetDeleteMs,"
         << "BSTRandomHeight,"
-        << "BSTBalancedHeight";
+        << "BSTBalancedHeight\n";
 
     for(int size : sizes)
     {
@@ -62,7 +62,7 @@ int main()
             << deleteBST << ","
             << deleteSet << ","
             << randomHeight << ","
-            << balancedHeight << ","
+            << balancedHeight
             << '\n';
 
         std::cout
