@@ -158,3 +158,42 @@ double AverageStdSet(int size, int runs
 
     return totalTime / runs;
 }
+
+//--------------------------------------------------------------------------------------
+
+double BenchmarkDeleteBST(int size)
+{
+    std::vector<int> keys =
+        GenerateKeys(size);
+
+    ShuffleKeys(keys);
+
+    BST tree;
+
+    for(int key : keys)
+    {
+        tree.insert(key);
+    }
+
+    LARGE_INTEGER freq;
+    LARGE_INTEGER start;
+    LARGE_INTEGER end;
+
+    QueryPerformanceFrequency(&freq);
+
+    QueryPerformanceCounter(&start);
+
+    for(int key : keys)
+    {
+        tree.remove(key);
+    }
+
+    QueryPerformanceCounter(&end);
+
+    return MeasureMilliseconds(
+        start,
+        end,
+        freq
+    );
+}
+
