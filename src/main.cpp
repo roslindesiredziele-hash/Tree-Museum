@@ -58,7 +58,9 @@ int main()
             << balancedTime << ","
             << setTime << ","
             << randomHeight << ","
-            << balancedHeight
+            << balancedHeight << ","
+            << deleteBST << ","
+            << deleteSet
             << '\n';
 
         std::cout
@@ -76,6 +78,12 @@ int main()
             << randomHeight
             << " | Balanced Height: "
             << balancedHeight
+            << " | delete BST: "
+            << deleteBST
+            << " ms"
+            << " | delete Set: "
+            << deleteSet
+            << " ms"
             << '\n';
     }
 
