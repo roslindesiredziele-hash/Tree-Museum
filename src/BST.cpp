@@ -103,3 +103,71 @@ void BST::remove(int key)
     remove(root, key);
 }
 
+
+
+void BST::remove(Node*& node, int key)
+{
+    if(node == nullptr)
+    {
+        return;
+    }
+
+    if(key < node->key)
+    {
+        remove(node->left, key);
+    }
+    else if(key > node->key)
+    {
+        remove(node->right, key);
+    }
+    else
+    {
+        // no children
+
+        if(node->left == nullptr &&
+           node->right == nullptr)
+        {
+            delete node;
+
+            node = nullptr;
+        }
+
+        // only right child
+
+        else if(node->left == nullptr)
+        {
+            Node* temp = node;
+
+            node = node->right;
+
+            delete temp;
+        }
+
+        // only left child
+
+        else if(node->right == nullptr)
+        {
+            Node* temp = node;
+
+            node = node->left;
+
+            delete temp;
+        }
+
+        // two children
+
+        else
+        {
+            Node* successor =
+                findMin(node->right);
+
+            node->key =
+                successor->key;
+
+            remove(
+                node->right,
+                successor->key
+            );
+        }
+    }
+}
