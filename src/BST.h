@@ -23,6 +23,8 @@ class BST
 
     void destroy(Node*);
 
+    void remove(Node*&, int);
+
     public:
 
     BST();
