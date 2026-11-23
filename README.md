@@ -385,7 +385,7 @@ The following graphs were generated directly from `benchmark.csv`.
 
 Insertion order has a significant impact on tree structure.
 
-Balanced insertion produced trees whose heights closely matched the theoretical minimum.
+Balanced insertion produced trees whose heights matched the theoretical minimum for every tested tree size.
 
 For the largest benchmark:
 
@@ -413,7 +413,7 @@ The shallower structure reduced the average search path during insertion.
 
 ### Comparison with std::set
 
-Although `std::set` maintained logarithmic behavior, it was slower than both BST variants because it performs balancing operations internally.
+Although `std::set` maintained logarithmic behavior, it exhibited higher insertion times than both BST variants because it performs balancing operations internally. This additional work guarantees logarithmic height regardless of insertion order.
 
 ---
 
