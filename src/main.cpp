@@ -73,6 +73,7 @@ int main()
             << '\n';
 
         rmfile 
+            << size << ","
             << deleteBST << ","
             << deleteSet
             << '\n';
@@ -92,17 +93,18 @@ int main()
             << randomHeight
             << " | Balanced Height: "
             << balancedHeight
-            <<'\n\n'
+            <<"\n\n"
             << " | delete BST: "
             << deleteBST
             << " ms"
             << " | delete Set: "
             << deleteSet
             << " ms"
-            << '\n\n';
+            << "\n\n";
     }
 
     file.close();
+    rmfile.close();
 
     std::cout << "\nBenchmark complete.\n";
     //--------------------------------------------------------------------
