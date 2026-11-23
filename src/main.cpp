@@ -91,7 +91,6 @@ int main()
     }
 
     file.close();
-    rmfile.close();
 
     std::cout << "\nBenchmark complete.\n";
     //--------------------------------------------------------------------
