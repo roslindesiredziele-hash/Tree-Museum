@@ -1,8 +1,6 @@
 #ifndef BST_H
 #define BST_H
 
-#include <vector>
-
 class BST
 {
     private:

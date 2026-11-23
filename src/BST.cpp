@@ -1,7 +1,5 @@
 #include "BST.h"
 
-#include <vector>
-
 BST::BST():
      root(nullptr)
 {

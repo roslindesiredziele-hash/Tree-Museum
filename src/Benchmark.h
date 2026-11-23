@@ -3,6 +3,8 @@
 
 #include <Windows.h>
 
+#include <vector>
+
 double AverageRandomBST(int,int,int&);
 
 double AverageBalancedBST(int,int,int&);

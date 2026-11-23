@@ -1,7 +1,5 @@
 #include "Utils.h"
 
-#include <vector>
-
 void BuildBalancedOrder(const std::vector<int>& sorted, int left, int right, std::vector<int>& order)
 {
     if(left > right)
