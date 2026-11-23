@@ -80,13 +80,14 @@ int main()
             << randomHeight
             << " | Balanced Height: "
             << balancedHeight
+            <<'\n\n'
             << " | delete BST: "
             << deleteBST
             << " ms"
             << " | delete Set: "
             << deleteSet
             << " ms"
-            << '\n';
+            << '\n\n';
     }
 
     file.close();
