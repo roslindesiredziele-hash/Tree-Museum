@@ -120,9 +120,6 @@ int main()
             << " | AVL Delete: "
             << avlDelete
             << " ms"
-            << " | Ternary: "
-            << ternaryTime
-            << " ms"
             << " | Ternary Random: "
             << ternaryTime
             << " ms"
