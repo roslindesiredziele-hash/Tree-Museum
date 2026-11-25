@@ -60,3 +60,20 @@ void AVL::updateHeight(Node* node)
     node->height = 1 + std::max(height(node->left), height(node->right));
 }
 
+AVL::Node* AVL::rotateRight(Node* y)
+{
+    Node* x = y -> left;
+
+    Node* T2 = x -> right;
+
+    x -> right = y;
+
+    y -> left = T2;
+
+    updateHeight(y);
+
+    updateHeight(x);
+
+    return x;
+}
+
