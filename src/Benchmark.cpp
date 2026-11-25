@@ -300,3 +300,48 @@ double AverageAVL(int size, int runs, int& avgHeight)
     return total / runs;
 }
 
+double BenchmarkDeleteAVL(int size)
+{
+    std::vector<int> keys = GenerateKeys(size);
+
+    ShuffleKeys(keys);
+
+    AVL tree;
+
+    for(int key : keys)
+    {
+        tree.insert(key);
+    }
+
+    LARGE_INTEGER freq;
+    LARGE_INTEGER start;
+    LARGE_INTEGER end;
+
+    QueryPerformanceFrequency(&freq);
+
+    QueryPerformanceCounter(&start);
+
+    for(int key : keys)
+    {
+        tree.remove(key);
+    }
+
+    QueryPerformanceCounter(&end);
+
+    return MeasureMilliseconds(start, end, freq);
+}
+
+double AverageDeleteAVL(int size, int runs)
+{
+    double total = 0;
+
+    for(int i = 0;
+        i < runs;
+        i++)
+    {
+        total +=
+            BenchmarkDeleteAVL(size);
+    }
+
+    return total / runs;
+}
