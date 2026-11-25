@@ -21,6 +21,8 @@ private:
 
     Node* insert(Node*, int);
 
+    Node* remove(Node*, int);
+
     void destroy(Node*);
 
     int height(Node*) const;
@@ -33,8 +35,6 @@ private:
 
     Node* rotateRight(Node*);
 
-
-    Node* remove(Node*, int);
     Node* findMin(Node*);
 
 public:
@@ -48,6 +48,10 @@ public:
     int height() const;
 
     void remove(int);
+
+    int size() const;
+
+    bool empty() const
 };
 
 #endif
