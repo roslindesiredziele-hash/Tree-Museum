@@ -176,3 +176,14 @@ void AVL::remove(int key)
 {
     root = remove(root, key);
 }
+
+AVL::Node* AVL::findMin(Node* node)
+{
+    while(node->left != nullptr)
+    {
+        node = node->left;
+    }
+
+    return node;
+}
+
