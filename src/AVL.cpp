@@ -319,14 +319,14 @@ bool AVL::contains(Node* node, int key) const
         return false;
     }
 
-    if(key == node->key)
+    if(key == node -> key)
     {
         return true;
     }
 
     if(key < node -> key)
     {
-        return contains(node->left, key);
+        return contains(node -> left, key);
     }
 
     return contains(node -> right, key);
@@ -339,3 +339,16 @@ void AVL::inorder() const
     std::cout << '\n';
 }
 
+void AVL::inorder(Node* node) const
+{
+    if(node == nullptr)
+    {
+        return;
+    }
+
+    inorder(node -> left);
+
+    std::cout << node -> key << ' ';
+
+    inorder(node -> right);
+}
