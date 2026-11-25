@@ -44,6 +44,8 @@ public:
     bool empty() const;
 
     bool contains(int) const;
+
+    void inorder() const;
 };
 
 #endif
