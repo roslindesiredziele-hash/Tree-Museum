@@ -260,7 +260,7 @@ AVL::Node* AVL::remove(Node* node, int key)
 
         Node* successor = findMin(node -> right);
 
-        node - >key = successor -> key;
+        node -> key = successor -> key;
 
         node -> right = remove( node -> right, successor -> key);
     }
