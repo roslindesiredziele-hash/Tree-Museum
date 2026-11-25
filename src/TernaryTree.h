@@ -29,6 +29,8 @@ private:
 
     bool contains(Node* node, int key) const;
 
+    void inorder(Node*) const;
+
 public:
 
     TernaryTree();
