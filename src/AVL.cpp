@@ -50,4 +50,13 @@ int AVL::getBalance(Node* node) const
     return height(node->left) - height(node->right);
 }
 
+void AVL::updateHeight(Node* node)
+{
+    if(node == nullptr)
+    {
+        return;
+    }
+
+    node->height = 1 + std::max(height(node->left), height(node->right));
+}
 
