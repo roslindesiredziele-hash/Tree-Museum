@@ -12,6 +12,6 @@ std::vector<int> GenerateKeys(int);
 std::vector<int>
 GenerateBalancedTernaryOrder(const std::vector<int>&);
 
-
+void GenerateBalancedTernaryOrderRec(const std::vector<int>& keys, int left, int right, std::vector<int>& result);
 
 #endif
