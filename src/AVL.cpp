@@ -332,3 +332,10 @@ bool AVL::contains(Node* node, int key) const
     return contains(node -> right, key);
 }
 
+void AVL::inorder() const
+{
+    inorder(root);
+
+    std::cout << '\n';
+}
+
