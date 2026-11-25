@@ -21,6 +21,12 @@ private:
 
     int nodeCount;
 
+    void insert(Node*&, int);
+
+    void destroy(Node*);
+
+    int height(Node*) const;
+
 public:
 
     TernaryTree();
@@ -29,11 +35,11 @@ public:
 
     void insert(int);
 
-    void remove(int);
-
     int height() const;
 
     int size() const;
+
+    bool empty() const;
 };
 
 #endif
