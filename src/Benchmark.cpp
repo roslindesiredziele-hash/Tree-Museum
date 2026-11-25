@@ -247,3 +247,34 @@ double AverageDeleteStdSet(int size, int runs)
 
     return total / runs;
 }
+
+//---------------------------------------------------------
+
+double BenchmarkAVL(int size, int& height)
+{
+    std::vector<int> keys = GenerateKeys(size);
+
+    ShuffleKeys(keys);
+
+    AVL tree;
+
+    LARGE_INTEGER freq;
+    LARGE_INTEGER start;
+    LARGE_INTEGER end;
+
+    QueryPerformanceFrequency(&freq);
+
+    QueryPerformanceCounter(&start);
+
+    for(int key : keys)
+    {
+        tree.insert(key);
+    }
+
+    QueryPerformanceCounter(&end);
+
+    height = tree.height();
+
+    return MeasureMilliseconds(start, end, freq);
+}
+
