@@ -65,13 +65,14 @@ int main()
 
         double avlDelete = AverageDeleteAVL(size, runs);
 
-        
+        double ternaryTime = AverageTernary(size, runs, ternaryHeight);
 
         file
             << size << ","
             << randomTime << ","
             << balancedTime << ","
             << avlTime << ","
+            << ternaryTime << ","
             << setTime << ","
             << deleteBST << ","
             << avlDelete << ","
