@@ -45,4 +45,8 @@ double BenchmarkDeleteAVL(int);
 
 double AverageDeleteAVL(int, int);
 
+double BenchmarkTernary(int, int&);
+
+double AverageTernary(int, int, int&);
+
 #endif
