@@ -40,4 +40,14 @@ int AVL::height(Node* node) const
     return node->height;
 }
 
+int AVL::getBalance(Node* node) const
+{
+    if(node == nullptr)
+    {
+        return 0;
+    }
+
+    return height(node->left) - height(node->right);
+}
+
 
