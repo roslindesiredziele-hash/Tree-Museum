@@ -1,6 +1,7 @@
 #include "Benchmark.h"
 #include "BST.h"
 #include "AVL.h"
+#include "TernaryTree.h"
 #include "../Utils/Utils.h"
 
 #include <Windows.h>
@@ -248,7 +249,7 @@ double AverageDeleteStdSet(int size, int runs)
     return total / runs;
 }
 
-//---------------------------------------------------------
+//-------------------------------------------------------------------------
 
 double BenchmarkAVL(int size, int& height)
 {
@@ -339,9 +340,37 @@ double AverageDeleteAVL(int size, int runs)
         i < runs;
         i++)
     {
-        total +=
-            BenchmarkDeleteAVL(size);
+        total += BenchmarkDeleteAVL(size);
     }
 
     return total / runs;
 }
+
+double BenchmarkTernary(int size, int& height)
+{
+    std::vector<int> keys = GenerateKeys(size);
+
+    ShuffleKeys(keys);
+
+    TernaryTree tree;
+
+    LARGE_INTEGER freq;
+    LARGE_INTEGER start;
+    LARGE_INTEGER end;
+
+    QueryPerformanceFrequency(&freq);
+
+    QueryPerformanceCounter(&start);
+
+    for(int key : keys)
+    {
+        tree.insert(key);
+    }
+
+    QueryPerformanceCounter(&end);
+
+    height = tree.height();
+
+    return MeasureMilliseconds(start, end, freq);
+}
+
