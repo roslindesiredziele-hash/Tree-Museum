@@ -69,6 +69,8 @@ int main()
 
         double ternaryTime = AverageTernary(size, runs, ternaryHeight);
 
+        double balancedTernaryTime = AverageBalancedTernary(size, runs, balancedTernaryHeight);
+
         file
             << size << ","
             << randomTime << ","
