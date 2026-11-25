@@ -3,7 +3,3 @@
 *.obj
 .vscode/
 .vscode
-AVL.h
-AVL.cpp
-Ternary.h
-Ternary.cpp
