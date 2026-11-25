@@ -1,7 +1,7 @@
 #include "BST.h"
 
 BST::BST():
-     root(nullptr)
+     root(nullptr),
 {
 
 }

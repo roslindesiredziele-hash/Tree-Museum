@@ -15,6 +15,8 @@ class BST
 
     Node* root;
 
+    int nodeCount;
+
     void insert(Node*&, int);
 
     int height(const Node*) const;
