@@ -89,3 +89,9 @@ void TernaryTree::insert(Node*& node, int key)
         insert(node -> middle, key);
     }
 }
+
+int TernaryTree::height() const
+{
+    return height(root);
+}
+
