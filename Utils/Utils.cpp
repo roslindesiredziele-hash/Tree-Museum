@@ -80,3 +80,12 @@ void GenerateBalancedTernaryOrderRec(const std::vector<int>& keys, int left, int
 
     GenerateBalancedTernaryOrderRec(keys, third2 + 1, right, result);
 }
+
+std::vector<int> GenerateBalancedTernaryOrder(const std::vector<int>& keys)
+{
+    std::vector<int> result;
+
+    GenerateBalancedTernaryOrderRec(keys, 0, static_cast<int>(keys.size()) - 1, result);
+
+    return result;
+}
