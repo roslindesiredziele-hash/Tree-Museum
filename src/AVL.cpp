@@ -77,3 +77,19 @@ AVL::Node* AVL::rotateRight(Node* y)
     return x;
 }
 
+AVL::Node* AVL::rotateLeft(Node* x)
+{
+    Node* y = x -> right;
+
+    Node* T2 = y -> left;
+
+    y -> left = x;
+
+    x -> right = T2;
+
+    updateHeight(x);
+
+    updateHeight(y);
+
+    return y;
+}
