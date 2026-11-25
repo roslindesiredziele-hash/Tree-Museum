@@ -1,6 +1,7 @@
 #include "AVL.h"
 
 #include <algorithm>
+#include <iostream>
 
 AVL::AVL()
     : root(nullptr),
@@ -330,3 +331,4 @@ bool AVL::contains(Node* node, int key) const
 
     return contains(node -> right, key);
 }
+

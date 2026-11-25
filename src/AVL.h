@@ -37,7 +37,9 @@ private:
 
     Node* findMin(Node*);
 
-     bool contains(Node*, int) const;
+    bool contains(Node*, int) const;
+
+    void inorder(Node*) const;
 
 public:
 
@@ -56,6 +58,8 @@ public:
     bool empty() const;
     
     bool contains(int) const;
+
+    void inorder() const;
 };
 
 #endif
