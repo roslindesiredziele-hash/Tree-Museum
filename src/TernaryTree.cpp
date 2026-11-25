@@ -112,3 +112,8 @@ int TernaryTree::height(Node* node) const
         );
 }
 
+int TernaryTree::size() const
+{
+    return nodeCount;
+}
+
