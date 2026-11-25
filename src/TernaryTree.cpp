@@ -6,3 +6,8 @@ TernaryTree::TernaryTree()
 {
 }
 
+TernaryTree::~TernaryTree()
+{
+    destroy(root);
+}
+
