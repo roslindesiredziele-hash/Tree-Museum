@@ -24,3 +24,20 @@ void AVL::destroy(Node* node)
 
     delete node;
 }
+
+int AVL::height() const
+{
+    return height(root);
+}
+
+int AVL::height(Node* node) const
+{
+    if(node == nullptr)
+    {
+        return 0;
+    }
+
+    return node->height;
+}
+
+
