@@ -21,8 +21,6 @@ class BST
 
     int height(const Node*) const;
 
-    int size(const Node*) const;
-
     void destroy(Node*);
 
     void remove(Node*&, int);

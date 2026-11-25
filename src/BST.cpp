@@ -86,16 +86,6 @@ int BST::size() const
     return nodeCount;
 }
 
-int BST::size(const Node* node) const
-{
-    if(node == nullptr)
-    {
-        return 0;
-    }
-
-    return 1 + size(node -> left) + size(node -> right);
-}
-
 bool BST::empty() const
 {
     return root == nullptr;
@@ -153,6 +143,8 @@ void BST::remove(Node*& node, int key)
             node = node -> right;
 
             delete temp;
+
+            --nodeCount;
         }
 
         // only left child
@@ -164,6 +156,8 @@ void BST::remove(Node*& node, int key)
             node = node -> left;
 
             delete temp;
+
+            --nodeCount;
         }
 
         // two children
