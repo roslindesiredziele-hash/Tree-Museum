@@ -50,6 +50,8 @@ int main()
         int balancedHeight = 0;
         int avlHeight = 0;
         int ternaryHeight = 0;
+        int balancedTernaryHeight = 0;
+
 
         double randomTime = AverageRandomBST(size, runs, randomHeight);
 
@@ -79,7 +81,8 @@ int main()
             << deleteSet << ","
             << randomHeight << ","
             << balancedHeight << ","
-            << avlHeight
+            << avlHeight << ","
+            << ternaryHeight
             << '\n';
 
         std::cout
