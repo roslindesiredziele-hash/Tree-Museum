@@ -41,6 +41,8 @@ void BST::insert(Node*& node, int key)
         node -> left = nullptr;
         node -> right = nullptr;
 
+        ++nodeCount;
+
         return;
     }
 
@@ -81,7 +83,7 @@ int BST::height(const Node* node) const
 
 int BST::size() const
 {
-    return size(root);
+    return nodeCount;
 }
 
 int BST::size(const Node* node) const
@@ -138,6 +140,8 @@ void BST::remove(Node*& node, int key)
             delete node;
 
             node = nullptr;
+
+            --nodeCount;
         }
 
         // only right child
