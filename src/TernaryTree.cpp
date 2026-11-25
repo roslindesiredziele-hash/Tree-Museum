@@ -39,6 +39,7 @@ void TernaryTree::insert(Node*& node, int key)
         node = new Node;
 
         node -> leftKey = key;
+        node->rightKey = 0;
 
         node -> hasSecondKey = false;
 
