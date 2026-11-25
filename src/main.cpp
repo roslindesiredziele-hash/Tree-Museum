@@ -33,16 +33,18 @@ int main()
         << "Size,"
         << "BSTRandomMs,"
         << "BSTBalancedMs,"
-        <<"AVLMs,"
-        << "TernaryMs,"
+        << "AVLMs,"
+        << "TernaryRandomMs,"
+        << "TernaryBalancedMs,"
         << "StdSetMs,"
         << "BSTDeleteMs,"
-        <<"AVLDeleteMs,"
-        <<"StdSetDeleteMs,"
+        << "AVLDeleteMs,"
+        << "StdSetDeleteMs,"
         << "BSTRandomHeight,"
         << "BSTBalancedHeight,"
-        <<"AVLHeight,"
-        << "TernaryHeight\n";
+        << "AVLHeight,"
+        << "TernaryRandomHeight,"
+        << "TernaryBalancedHeight\n";
 
     for(int size : sizes)
     {
