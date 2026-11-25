@@ -178,3 +178,27 @@ void TernaryTree::inorder() const
     std::cout << '\n';
 }
 
+void TernaryTree::inorder(Node* node) const
+{
+    if(node == nullptr)
+    {
+        return;
+    }
+
+    inorder(node -> left);
+
+    std::cout
+        << node -> leftKey
+        << ' ';
+
+    inorder(node -> middle);
+
+    if(node -> hasSecondKey)
+    {
+        std::cout
+            << node -> rightKey
+            << ' ';
+    }
+
+    inorder(node->right);
+}
