@@ -278,3 +278,25 @@ double BenchmarkAVL(int size, int& height)
     return MeasureMilliseconds(start, end, freq);
 }
 
+double AverageAVL(int size, int runs, int& avgHeight)
+{
+    double total = 0;
+
+    avgHeight = 0;
+
+    for(int i = 0;
+        i < runs;
+        i++)
+    {
+        int h = 0;
+
+        total += BenchmarkAVL(size, h);
+
+        avgHeight += h;
+    }
+
+    avgHeight /= runs;
+
+    return total / runs;
+}
+
