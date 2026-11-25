@@ -13,27 +13,32 @@ int main()
 {
     AVL tree;
 
-    tree.insert(30);
-    tree.insert(20);
-    tree.insert(10);
+tree.insert(30);
+tree.insert(20);
+tree.insert(10);   // LL
 
-    std::cout
-        << tree.height()
-        << '\n';
+tree.insert(40);
+tree.insert(50);   // RR
 
-    std::cout
-        << tree.size()
-        << '\n';
+tree.insert(25);   // LR / RL candidate
 
-    tree.remove(20);
+tree.inorder();
 
-    std::cout
-        << tree.height()
-        << '\n';
+std::cout
+    << tree.height()
+    << '\n';
 
-    std::cout
-        << tree.size()
-        << '\n';
+std::cout
+    << tree.size()
+    << '\n';
+
+std::cout
+    << tree.contains(25)
+    << '\n';
+
+std::cout
+    << tree.contains(999)
+    << '\n';
 }
 /*int main()
 {
