@@ -187,3 +187,47 @@ AVL::Node* AVL::findMin(Node* node)
     return node;
 }
 
+AVL::Node* AVL::remove(Node* node,int key)
+{
+    if(node == nullptr)
+{
+    return node;
+}
+
+updateHeight(node);
+
+int balance =
+    getBalance(node);
+
+if(balance > 1 &&
+   getBalance(node->left) >= 0)
+{
+    return rotateRight(node);
+}
+
+if(balance > 1 &&
+   getBalance(node->left) < 0)
+{
+    node->left =
+        rotateLeft(node->left);
+
+    return rotateRight(node);
+}
+
+if(balance < -1 &&
+   getBalance(node->right) <= 0)
+{
+    return rotateLeft(node);
+}
+
+if(balance < -1 &&
+   getBalance(node->right) > 0)
+{
+    node->right =
+        rotateRight(node->right);
+
+    return rotateLeft(node);
+}
+
+return node;
+}

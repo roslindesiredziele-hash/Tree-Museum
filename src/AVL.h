@@ -19,7 +19,7 @@ private:
 
     int nodeCount;
 
-    Node* insert(Node*&, int);
+    Node* insert(Node*, int);
 
     void destroy(Node*);
 
