@@ -117,3 +117,7 @@ int TernaryTree::size() const
     return nodeCount;
 }
 
+bool TernaryTree::empty() const
+{
+    return root == nullptr;
+}
