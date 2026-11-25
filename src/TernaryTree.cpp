@@ -74,6 +74,16 @@ void TernaryTree::insert(Node*& node, int key)
         return;
     }
 
+    if(key == node->leftKey)
+    {
+        return;
+    }
+    
+    if(key == node->rightKey)
+    {
+        return;
+    }
+
     // full node
 
     if(key < node -> leftKey)
