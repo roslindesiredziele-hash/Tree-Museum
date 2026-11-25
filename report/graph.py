@@ -42,6 +42,22 @@ plt.plot(
 
 plt.plot(
     df["Size"],
+    df["TernaryRandomMs"],
+    marker="o",
+    linewidth=2,
+    label="Ternary Random"
+)
+
+plt.plot(
+    df["Size"],
+    df["TernaryBalancedMs"],
+    marker="o",
+    linewidth=2,
+    label="Ternary Balanced"
+)
+
+plt.plot(
+    df["Size"],
     df["StdSetMs"],
     marker="o",
     linewidth=2,
@@ -93,6 +109,22 @@ plt.plot(
     marker="o",
     linewidth=2,
     label="AVL"
+)
+
+plt.plot(
+    df["Size"],
+    df["TernaryRandomHeight"],
+    marker="o",
+    linewidth=2,
+    label="Ternary Random"
+)
+
+plt.plot(
+    df["Size"],
+    df["TernaryBalancedHeight"],
+    marker="o",
+    linewidth=2,
+    label="Ternary Balanced"
 )
 
 plt.title("Tree Height vs Number of Keys")
@@ -272,6 +304,84 @@ plt.tight_layout()
 
 plt.savefig(
     "report/avl_vs_bst_delete.png",
+    dpi=300
+)
+
+# ==================================================
+# Graph 7
+# Random vs Balanced Ternary Height
+# ==================================================
+
+plt.figure(figsize=(10, 6))
+
+plt.plot(
+    df["Size"],
+    df["TernaryRandomHeight"],
+    marker="o",
+    linewidth=2,
+    label="Ternary Random"
+)
+
+plt.plot(
+    df["Size"],
+    df["TernaryBalancedHeight"],
+    marker="o",
+    linewidth=2,
+    label="Balanced Ternary"
+)
+
+plt.title("Random vs Balanced Ternary Height")
+
+plt.xlabel("Number of Keys")
+plt.ylabel("Height")
+
+plt.grid(True, alpha=0.3)
+
+plt.legend()
+
+plt.tight_layout()
+
+plt.savefig(
+    "report/ternary_height_comparison.png",
+    dpi=300
+)
+
+# ==================================================
+# Graph 8
+# Random vs Balanced Ternary Insertion
+# ==================================================
+
+plt.figure(figsize=(10, 6))
+
+plt.plot(
+    df["Size"],
+    df["TernaryRandomMs"],
+    marker="o",
+    linewidth=2,
+    label="Ternary Random"
+)
+
+plt.plot(
+    df["Size"],
+    df["TernaryBalancedMs"],
+    marker="o",
+    linewidth=2,
+    label="Balanced Ternary"
+)
+
+plt.title("Random vs Balanced Ternary Insertion Time")
+
+plt.xlabel("Number of Keys")
+plt.ylabel("Insertion Time (ms)")
+
+plt.grid(True, alpha=0.3)
+
+plt.legend()
+
+plt.tight_layout()
+
+plt.savefig(
+    "report/ternary_insert_comparison.png",
     dpi=300
 )
 
