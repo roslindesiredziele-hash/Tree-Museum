@@ -393,3 +393,32 @@ double AverageTernary(int size, int runs, int& averageHeight)
 
     return totalTime / runs;
 }
+
+double BenchmarkBalancedTernary(int size, int& height)
+{
+    std::vector<int> keys = GenerateKeys(size);
+
+    std::vector<int> balanced = GenerateBalancedTernaryOrder(keys);
+
+    TernaryTree tree;
+
+    LARGE_INTEGER freq;
+    LARGE_INTEGER start;
+    LARGE_INTEGER end;
+
+    QueryPerformanceFrequency(&freq);
+
+    QueryPerformanceCounter(&start);
+
+    for(int key : balanced)
+    {
+        tree.insert(key);
+    }
+
+    QueryPerformanceCounter(&end);
+
+    height =
+        tree.height();
+
+    return MeasureMilliseconds(start, end, freq);
+}
