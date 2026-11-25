@@ -1,6 +1,7 @@
 #include "TernaryTree.h"
 
 #include <algorithm>
+#include <iostream>
 
 TernaryTree::TernaryTree()
     : root(nullptr),
@@ -169,3 +170,11 @@ bool TernaryTree::contains(int key) const
 {
     return contains(root, key);
 }
+
+void TernaryTree::inorder() const
+{
+    inorder(root);
+
+    std::cout << '\n';
+}
+
