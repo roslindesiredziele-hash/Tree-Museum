@@ -49,4 +49,8 @@ double BenchmarkTernary(int, int&);
 
 double AverageTernary(int, int, int&);
 
+double BenchmarkBalancedTernary(int, int&);
+
+double AverageBalancedTernary(int, int, int&);
+
 #endif
