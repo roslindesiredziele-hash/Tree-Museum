@@ -121,3 +121,35 @@ bool TernaryTree::empty() const
 {
     return root == nullptr;
 }
+
+bool TernaryTree::contains(Node* node, int key) const
+{
+    if(node == nullptr)
+    {
+        return false;
+    }
+
+    if(key == node -> leftKey)
+    {
+        return true;
+    }
+
+    if(node -> hasSecondKey &&
+       key == node -> rightKey)
+    {
+        return true;
+    }
+
+    if(key < node -> leftKey)
+    {
+        return contains(node -> left, key);
+    }
+
+    if(node -> hasSecondKey &&
+       key > node -> rightKey)
+    {
+        return contains(node -> right, key);
+    }
+
+    return contains(node->middle,key);
+}

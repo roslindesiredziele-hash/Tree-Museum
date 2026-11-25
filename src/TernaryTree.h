@@ -27,6 +27,8 @@ private:
 
     int height(Node*) const;
 
+    bool contains(Node* node, int key) const;
+
 public:
 
     TernaryTree();
