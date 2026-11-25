@@ -1,5 +1,6 @@
 #include "Benchmark.h"
 #include "BST.h"
+#include "AVL.h"
 #include "../Utils/Utils.h"
 
 #include <Windows.h>
