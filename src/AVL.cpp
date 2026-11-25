@@ -47,7 +47,7 @@ int AVL::height(Node* node) const
         return 0;
     }
 
-    return node->height;
+    return node -> height;
 }
 
 int AVL::getBalance(Node* node) const
@@ -57,7 +57,7 @@ int AVL::getBalance(Node* node) const
         return 0;
     }
 
-    return height(node->left) - height(node->right);
+    return height(node -> left) - height(node -> right);
 }
 
 void AVL::updateHeight(Node* node)
@@ -67,7 +67,7 @@ void AVL::updateHeight(Node* node)
         return;
     }
 
-    node->height = 1 + std::max(height(node->left), height(node->right));
+    node -> height = 1 + std::max(height(node -> left), height(node -> right));
 }
 
 AVL::Node* AVL::rotateRight(Node* y)
@@ -121,6 +121,8 @@ AVL::Node* AVL::insert(Node* node, int key)
 
         newNode -> left = nullptr;
         newNode -> right = nullptr;
+
+        ++nodeCount;
 
         return newNode;
     }
@@ -189,55 +191,116 @@ void AVL::remove(int key)
 
 AVL::Node* AVL::findMin(Node* node)
 {
-    while(node->left != nullptr)
+    while(node -> left != nullptr)
     {
-        node = node->left;
+        node = node -> left;
     }
 
     return node;
 }
 
-AVL::Node* AVL::remove(Node* node,int key)
+AVL::Node* AVL::remove(Node* node, int key)
 {
     if(node == nullptr)
-{
+    {
+        return nullptr;
+    }
+
+    if(key < node -> key)
+    {
+        node->left = remove(node -> left, key);
+    }
+    else if(key > node -> key)
+    {
+        node -> right = remove(node -> right, key);
+    }
+    else
+    {
+        // no children
+
+        if(node -> left == nullptr &&
+           node -> right == nullptr)
+        {
+            delete node;
+
+            --nodeCount;
+
+            return nullptr;
+        }
+
+        // only right child
+
+        if(node -> left == nullptr)
+        {
+            Node* child =
+                node -> right;
+
+            delete node;
+
+            --nodeCount;
+
+            return child;
+        }
+
+        // only left child
+
+        if(node -> right == nullptr)
+        {
+            Node* child =
+                node -> left;
+
+            delete node;
+
+            --nodeCount;
+
+            return child;
+        }
+
+        // two children
+
+        Node* successor = findMin(node -> right);
+
+        node - >key = successor -> key;
+
+        node -> right = remove( node -> right, successor -> key);
+    }
+
+    updateHeight(node);
+
+    int balance = getBalance(node);
+
+    // LL
+
+    if(balance > 1 && getBalance(node -> left) >= 0)
+    {
+        return rotateRight(node);
+    }
+
+    // LR
+
+    if(balance > 1 && getBalance(node -> left) < 0)
+    {
+        node -> left =
+            rotateLeft(node -> left);
+
+        return rotateRight(node);
+    }
+
+    // RR
+
+    if(balance < -1 && getBalance(node -> right) <= 0)
+    {
+        return rotateLeft(node);
+    }
+
+    // RL
+
+    if(balance < -1 && getBalance(node -> right) > 0)
+    {
+        node -> right = rotateRight(node -> right);
+
+        return rotateLeft(node);
+    }
+
     return node;
-}
-
-updateHeight(node);
-
-int balance =
-    getBalance(node);
-
-if(balance > 1 &&
-   getBalance(node->left) >= 0)
-{
-    return rotateRight(node);
-}
-
-if(balance > 1 &&
-   getBalance(node->left) < 0)
-{
-    node->left =
-        rotateLeft(node->left);
-
-    return rotateRight(node);
-}
-
-if(balance < -1 &&
-   getBalance(node->right) <= 0)
-{
-    return rotateLeft(node);
-}
-
-if(balance < -1 &&
-   getBalance(node->right) > 0)
-{
-    node->right =
-        rotateRight(node->right);
-
-    return rotateLeft(node);
-}
-
-return node;
 }

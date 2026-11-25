@@ -51,7 +51,7 @@ public:
 
     int size() const;
 
-    bool empty() const
+    bool empty() const;
 };
 
 #endif
