@@ -305,3 +305,28 @@ AVL::Node* AVL::remove(Node* node, int key)
 
     return node;
 }
+
+bool AVL::contains(int key) const
+{
+    return contains(root, key);
+}
+
+bool AVL::contains(Node* node, int key) const
+{
+    if(node == nullptr)
+    {
+        return false;
+    }
+
+    if(key == node->key)
+    {
+        return true;
+    }
+
+    if(key < node -> key)
+    {
+        return contains(node->left, key);
+    }
+
+    return contains(node -> right, key);
+}

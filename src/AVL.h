@@ -37,6 +37,8 @@ private:
 
     Node* findMin(Node*);
 
+     bool contains(Node*, int) const;
+
 public:
 
     AVL();
@@ -51,11 +53,9 @@ public:
 
     int size() const;
 
-    bool empty() const;bool contains(int) const;
+    bool empty() const;
     
-    bool contains(Node*, int) const;
-
-
+    bool contains(int) const;
 };
 
 #endif
