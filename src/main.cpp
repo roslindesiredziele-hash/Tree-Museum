@@ -20,8 +20,6 @@ int main()
 
     constexpr int runs = 20;
 
-    int avlHeight = 0;
-
     std::ofstream file("data/benchmark.csv");
 
     if(!file)
@@ -48,6 +46,7 @@ int main()
     {
         int randomHeight = 0;
         int balancedHeight = 0;
+        int avlHeight = 0;
 
         double randomTime = AverageRandomBST(size, runs, randomHeight);
 
@@ -67,11 +66,14 @@ int main()
             << size << ","
             << randomTime << ","
             << balancedTime << ","
+            << avlTime << ","
             << setTime << ","
             << deleteBST << ","
+            << avlDelete << ","
             << deleteSet << ","
             << randomHeight << ","
-            << balancedHeight
+            << balancedHeight << ","
+            << avlHeight
             << '\n';
 
         std::cout
@@ -89,14 +91,21 @@ int main()
             << randomHeight
             << " | Balanced Height: "
             << balancedHeight
-            <<"\n\n"
             << " | BST Delete: "
             << deleteBST
             << " ms"
             << " | Set Delete: "
             << deleteSet
             << " ms"
-            << "\n\n";
+            << " | AVL: "
+            << avlTime
+            << " ms"
+            << " | AVL Height: "
+            << avlHeight
+            << " | AVL Delete: "
+            << avlDelete
+            << " ms"
+            << "\n";
     }
 
     file.close();
