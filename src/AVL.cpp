@@ -93,3 +93,86 @@ AVL::Node* AVL::rotateLeft(Node* x)
 
     return y;
 }
+
+void AVL::insert(int key)
+{
+    root = insert(root, key);
+}
+
+AVL::Node* AVL::insert(Node* node, int key)
+{
+    if(node == nullptr)
+    {
+        Node* newNode = new Node;
+
+        newNode -> key = key;
+
+        newNode -> height = 1;
+
+        newNode -> left = nullptr;
+        newNode -> right = nullptr;
+
+        return newNode;
+    }
+
+    if(key < node -> key)
+    {
+        node -> left = insert(node -> left, key);
+    }
+    else if(key > node -> key)
+    {
+        node -> right = insert(node->right, key);
+    }
+    else
+    {
+        return node;
+    }
+
+    updateHeight(node);
+
+    int balance =
+        getBalance(node);
+
+    // LL
+
+    if(balance > 1 &&
+       key < node->left->key)
+    {
+        return rotateRight(node);
+    }
+
+    // RR
+
+    if(balance < -1 &&
+       key > node->right->key)
+    {
+        return rotateLeft(node);
+    }
+
+    // LR
+
+    if(balance > 1 &&
+       key > node -> left -> key)
+    {
+        node -> left = rotateLeft(node -> left);
+
+        return rotateRight(node);
+    }
+
+    // RL
+
+    if(balance < -1 &&
+       key < node -> right -> key)
+    {
+        node -> right = rotateRight(node -> right);
+
+        return rotateLeft(node);
+    }
+
+    return node;
+}
+
+void AVL::remove(int key)
+{
+    root = remove(root, key);
+}

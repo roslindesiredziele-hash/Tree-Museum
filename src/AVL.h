@@ -17,7 +17,9 @@ private:
 
     Node* root;
 
-    void insert(Node*&, int);
+    int nodeCount;
+
+    Node* insert(Node*&, int);
 
     void destroy(Node*);
 
@@ -31,6 +33,10 @@ private:
 
     Node* rotateRight(Node*);
 
+
+    Node* remove(Node*, int);
+    Node* findMin(Node*);
+
 public:
 
     AVL();
@@ -40,6 +46,8 @@ public:
     void insert(int);
 
     int height() const;
+
+    void remove(int);
 };
 
 #endif
