@@ -4,7 +4,38 @@
 #include <iostream>
 #include <vector>
 
+
+#include "AVL.h"
+
+#include <iostream>
+
 int main()
+{
+    AVL tree;
+
+    tree.insert(30);
+    tree.insert(20);
+    tree.insert(10);
+
+    std::cout
+        << tree.height()
+        << '\n';
+
+    std::cout
+        << tree.size()
+        << '\n';
+
+    tree.remove(20);
+
+    std::cout
+        << tree.height()
+        << '\n';
+
+    std::cout
+        << tree.size()
+        << '\n';
+}
+/*int main()
 {
     std::vector<int> sizes =
     {
@@ -96,4 +127,4 @@ int main()
     //--------------------------------------------------------------------
 
     return 0;
-}
+}*/

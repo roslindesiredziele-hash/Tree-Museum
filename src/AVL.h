@@ -9,7 +9,7 @@ private:
     {
         int key;
 
-        int height;
+        int nodeHeight;
 
         Node* left;
         Node* right;
@@ -51,7 +51,11 @@ public:
 
     int size() const;
 
-    bool empty() const;
+    bool empty() const;bool contains(int) const;
+    
+    bool contains(Node*, int) const;
+
+
 };
 
 #endif

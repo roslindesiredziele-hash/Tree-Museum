@@ -3,7 +3,8 @@
 #include <algorithm>
 
 AVL::AVL()
-    : root(nullptr)
+    : root(nullptr),
+      nodeCount(0)
 {
 }
 
@@ -47,7 +48,7 @@ int AVL::height(Node* node) const
         return 0;
     }
 
-    return node -> height;
+    return node -> nodeHeight;
 }
 
 int AVL::getBalance(Node* node) const
@@ -67,7 +68,7 @@ void AVL::updateHeight(Node* node)
         return;
     }
 
-    node -> height = 1 + std::max(height(node -> left), height(node -> right));
+    node -> nodeHeight = 1 + std::max(height(node -> left), height(node -> right));
 }
 
 AVL::Node* AVL::rotateRight(Node* y)
@@ -117,7 +118,7 @@ AVL::Node* AVL::insert(Node* node, int key)
 
         newNode -> key = key;
 
-        newNode -> height = 1;
+        newNode -> nodeHeight = 1;
 
         newNode -> left = nullptr;
         newNode -> right = nullptr;
