@@ -422,3 +422,23 @@ double BenchmarkBalancedTernary(int size, int& height)
 
     return MeasureMilliseconds(start, end, freq);
 }
+
+double AverageBalancedTernary(int size, int runs, int& averageHeight)
+{
+    double totalTime = 0;
+
+    long long totalHeight = 0;
+
+    for(int i = 0; i < runs; i++)
+    {
+        int height = 0;
+
+        totalTime += BenchmarkBalancedTernary(size, height);
+
+        totalHeight += height;
+    }
+
+    averageHeight = static_cast<int>(totalHeight / runs);
+
+    return totalTime / runs;
+}
