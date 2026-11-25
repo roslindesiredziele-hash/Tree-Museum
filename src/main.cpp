@@ -61,11 +61,7 @@ int main()
 
         double avlTime = AverageAVL( size, runs, avlHeight);
 
-        double avlDelete =
-    AverageDeleteAVL(
-        size,
-        runs
-    );
+        double avlDelete = AverageDeleteAVL(size, runs);
 
         file
             << size << ","
