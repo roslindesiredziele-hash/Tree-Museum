@@ -42,6 +42,8 @@ public:
     int size() const;
 
     bool empty() const;
+
+    bool contains(int) const;
 };
 
 #endif
