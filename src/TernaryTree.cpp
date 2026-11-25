@@ -95,3 +95,20 @@ int TernaryTree::height() const
     return height(root);
 }
 
+int TernaryTree::height(Node* node) const
+{
+    if(node == nullptr)
+    {
+        return 0;
+    }
+
+    return 1 +
+        std::max(
+            {
+                height(node->left),
+                height(node->middle),
+                height(node->right)
+            }
+        );
+}
+
