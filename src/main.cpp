@@ -111,6 +111,11 @@ int main()
             << " | AVL Delete: "
             << avlDelete
             << " ms"
+            << " | Ternary: "
+            << ternaryTime
+            << " ms"
+            << " | Ternary Height: "
+            << ternaryHeight
             << "\n";
     }
 
