@@ -153,3 +153,8 @@ bool TernaryTree::contains(Node* node, int key) const
 
     return contains(node->middle,key);
 }
+
+bool TernaryTree::contains(int key) const
+{
+    return contains(root, key);
+}
