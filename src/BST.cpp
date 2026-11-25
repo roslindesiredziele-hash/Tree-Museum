@@ -2,6 +2,7 @@
 
 BST::BST():
      root(nullptr),
+    nodeCount(0)
 {
 
 }
