@@ -11,3 +11,17 @@ TernaryTree::~TernaryTree()
     destroy(root);
 }
 
+void TernaryTree::destroy(Node* node)
+{
+    if(node == nullptr)
+    {
+        return;
+    }
+
+    destroy(node->left);
+    destroy(node->middle);
+    destroy(node->right);
+
+    delete node;
+}
+
