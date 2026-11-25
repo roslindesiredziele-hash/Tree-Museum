@@ -25,3 +25,8 @@ void TernaryTree::destroy(Node* node)
     delete node;
 }
 
+void TernaryTree::insert(int key)
+{
+    insert(root, key);
+}
+
