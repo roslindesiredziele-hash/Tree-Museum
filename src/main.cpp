@@ -4,43 +4,7 @@
 #include <iostream>
 #include <vector>
 
-
-#include "AVL.h"
-
-#include <iostream>
-
 int main()
-{
-    AVL tree;
-
-tree.insert(30);
-tree.insert(20);
-tree.insert(10);   // LL
-
-tree.insert(40);
-tree.insert(50);   // RR
-
-tree.insert(25);   // LR / RL candidate
-
-tree.inorder();
-
-std::cout
-    << tree.height()
-    << '\n';
-
-std::cout
-    << tree.size()
-    << '\n';
-
-std::cout
-    << tree.contains(25)
-    << '\n';
-
-std::cout
-    << tree.contains(999)
-    << '\n';
-}
-/*int main()
 {
     std::vector<int> sizes =
     {
@@ -56,6 +20,8 @@ std::cout
 
     constexpr int runs = 20;
 
+    int avlHeight = 0;
+
     std::ofstream file("data/benchmark.csv");
 
     if(!file)
@@ -69,11 +35,14 @@ std::cout
         << "Size,"
         << "BSTRandomMs,"
         << "BSTBalancedMs,"
+        <<"AVLMs,"
         << "StdSetMs,"
         << "BSTDeleteMs,"
+        <<"AVLDeleteMs,"
         <<"StdSetDeleteMs,"
         << "BSTRandomHeight,"
-        << "BSTBalancedHeight\n";
+        << "BSTBalancedHeight,"
+        <<"AVLHeight\n";
 
     for(int size : sizes)
     {
@@ -89,6 +58,14 @@ std::cout
         double deleteBST = AverageDeleteBST(size, runs);
         
         double deleteSet = AverageDeleteStdSet(size, runs);
+
+        double avlTime = AverageAVL( size, runs, avlHeight);
+
+        double avlDelete =
+    AverageDeleteAVL(
+        size,
+        runs
+    );
 
         file
             << size << ","
@@ -132,4 +109,4 @@ std::cout
     //--------------------------------------------------------------------
 
     return 0;
-}*/
+}
