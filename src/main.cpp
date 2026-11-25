@@ -79,6 +79,7 @@ int main()
             << balancedTime << ","
             << avlTime << ","
             << ternaryTime << ","
+            << balancedTernaryTime << ","
             << setTime << ","
             << deleteBST << ","
             << avlDelete << ","
@@ -86,7 +87,8 @@ int main()
             << randomHeight << ","
             << balancedHeight << ","
             << avlHeight << ","
-            << ternaryHeight
+            << ternaryHeight << ","
+            << balancedTernaryHeight
             << '\n';
 
         std::cout
@@ -121,8 +123,16 @@ int main()
             << " | Ternary: "
             << ternaryTime
             << " ms"
+            << " | Ternary Random: "
+            << ternaryTime
+            << " ms"
+            << " | Ternary Balanced: "
+            << balancedTernaryTime
+            << " ms"
             << " | Ternary Height: "
             << ternaryHeight
+            << " | Balanced Ternary Height: "
+            << balancedTernaryHeight
             << "\n";
     }
 
