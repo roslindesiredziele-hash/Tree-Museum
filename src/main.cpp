@@ -49,6 +49,7 @@ int main()
         int randomHeight = 0;
         int balancedHeight = 0;
         int avlHeight = 0;
+        int ternaryHeight = 0;
 
         double randomTime = AverageRandomBST(size, runs, randomHeight);
 
@@ -63,6 +64,8 @@ int main()
         double avlTime = AverageAVL( size, runs, avlHeight);
 
         double avlDelete = AverageDeleteAVL(size, runs);
+
+        
 
         file
             << size << ","
