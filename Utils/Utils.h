@@ -9,4 +9,9 @@ std::vector<int> GenerateBalancedOrder(const std::vector<int>&);
 
 std::vector<int> GenerateKeys(int);
 
+std::vector<int>
+GenerateBalancedTernaryOrder(const std::vector<int>&);
+
+
+
 #endif
