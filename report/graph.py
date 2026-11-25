@@ -34,6 +34,14 @@ plt.plot(
 
 plt.plot(
     df["Size"],
+    df["AVLMs"],
+    marker="o",
+    linewidth=2,
+    label="AVL"
+)
+
+plt.plot(
+    df["Size"],
     df["StdSetMs"],
     marker="o",
     linewidth=2,
@@ -79,6 +87,14 @@ plt.plot(
     label="BST Balanced"
 )
 
+plt.plot(
+    df["Size"],
+    df["AVLHeight"],
+    marker="o",
+    linewidth=2,
+    label="AVL"
+)
+
 plt.title("Tree Height vs Number of Keys")
 
 plt.xlabel("Number of Keys")
@@ -107,7 +123,15 @@ plt.plot(
     df["BSTDeleteMs"],
     marker="o",
     linewidth=2,
-    label="BST Delete"
+    label="BST"
+)
+
+plt.plot(
+    df["Size"],
+    df["AVLDeleteMs"],
+    marker="o",
+    linewidth=2,
+    label="AVL"
 )
 
 plt.plot(
@@ -115,7 +139,7 @@ plt.plot(
     df["StdSetDeleteMs"],
     marker="o",
     linewidth=2,
-    label="std::set Delete"
+    label="std::set"
 )
 
 plt.title("Deletion Time vs Number of Keys")
@@ -131,6 +155,123 @@ plt.tight_layout()
 
 plt.savefig(
     "report/deletion_time.png",
+    dpi=300
+)
+
+# ==================================================
+# Graph 4
+# AVL vs Balanced BST Height
+# ==================================================
+
+plt.figure(figsize=(10, 6))
+
+plt.plot(
+    df["Size"],
+    df["BSTBalancedHeight"],
+    marker="o",
+    linewidth=2,
+    label="BST Balanced"
+)
+
+plt.plot(
+    df["Size"],
+    df["AVLHeight"],
+    marker="o",
+    linewidth=2,
+    label="AVL"
+)
+
+plt.title("AVL Height vs Perfectly Balanced BST")
+
+plt.xlabel("Number of Keys")
+plt.ylabel("Height")
+
+plt.grid(True, alpha=0.3)
+
+plt.legend()
+
+plt.tight_layout()
+
+plt.savefig(
+    "report/avl_height_comparison.png",
+    dpi=300
+)
+
+# ==================================================
+# Graph 5
+# AVL vs BST Insertion
+# ==================================================
+
+plt.figure(figsize=(10, 6))
+
+plt.plot(
+    df["Size"],
+    df["BSTRandomMs"],
+    marker="o",
+    linewidth=2,
+    label="BST Random"
+)
+
+plt.plot(
+    df["Size"],
+    df["AVLMs"],
+    marker="o",
+    linewidth=2,
+    label="AVL"
+)
+
+plt.title("AVL vs Random BST Insertion Time")
+
+plt.xlabel("Number of Keys")
+plt.ylabel("Insertion Time (ms)")
+
+plt.grid(True, alpha=0.3)
+
+plt.legend()
+
+plt.tight_layout()
+
+plt.savefig(
+    "report/avl_vs_bst_insert.png",
+    dpi=300
+)
+
+# ==================================================
+# Graph 6
+# AVL vs BST Deletion
+# ==================================================
+
+plt.figure(figsize=(10, 6))
+
+plt.plot(
+    df["Size"],
+    df["BSTDeleteMs"],
+    marker="o",
+    linewidth=2,
+    label="BST"
+)
+
+plt.plot(
+    df["Size"],
+    df["AVLDeleteMs"],
+    marker="o",
+    linewidth=2,
+    label="AVL"
+)
+
+plt.title("AVL vs BST Deletion Time")
+
+plt.xlabel("Number of Keys")
+plt.ylabel("Deletion Time (ms)")
+
+plt.grid(True, alpha=0.3)
+
+plt.legend()
+
+plt.tight_layout()
+
+plt.savefig(
+    "report/avl_vs_bst_delete.png",
     dpi=300
 )
 
